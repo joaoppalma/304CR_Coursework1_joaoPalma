@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player_controller : MonoBehaviour
 {
@@ -10,6 +12,15 @@ public class Player_controller : MonoBehaviour
     Animator anim;
     List<Rigidbody> allRbs;
 
+    public GameObject gunPos;
+    public GameObject bullet;
+    GameObject message;
+
+    public float fireForce = 20f;
+    
+
+    public bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +28,9 @@ public class Player_controller : MonoBehaviour
         allRbs.AddRange(GetComponentsInChildren<Rigidbody>());
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+
+        message = GameObject.FindGameObjectWithTag("UI");
+
         foreach (Rigidbody rb in allRbs)
         {
             rb.isKinematic = true;
@@ -43,6 +57,8 @@ public class Player_controller : MonoBehaviour
         }
         anim.enabled = false;
         agent.isStopped = true;
+
+        isDead = true;
     }
 
 
@@ -58,6 +74,18 @@ public class Player_controller : MonoBehaviour
             }
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            GameObject projectile = Instantiate(bullet, gunPos.transform.position, Quaternion.identity);
+            projectile.GetComponent<Rigidbody>().AddForce(gunPos.transform.up * fireForce, ForceMode.Impulse);
+        }
+
+        // keyboard inputs
+        if (Input.GetKey(KeyCode.R))
+        {
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            isDead = false;
+        }
     }
 
     private void PlayAnimations()

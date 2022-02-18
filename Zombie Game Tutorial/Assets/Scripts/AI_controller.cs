@@ -22,7 +22,15 @@ public class AI_controller : MonoBehaviour
 
     private void Update()
     {
-        Animations();
+        if (player.GetComponent<Player_controller>().isDead == true)
+        {
+            agent.isStopped = true;
+            anim.enabled = false;
+        }
+        else
+        {
+            Animations();
+        }
     }
 
     private void Animations()

@@ -64,10 +64,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Models\Gun\Modern Guns - Handgun\_Demo Assets\SimpleShoot.cs" />
     <Compile Include="Assets\Scripts\AI_controller.cs" />
+    <Compile Include="Assets\Scripts\Bullet_controller.cs" />
     <Compile Include="Assets\Scripts\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Player_controller.cs" />
     <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
+    <Compile Include="Assets\Scripts\UI_controller.cs" />
+    <None Include="Assets\Models\Gun\Modern Guns - Handgun\README.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/University/3rd year/304CR - Games and AI/CW1/Zombie Game Tutorial/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

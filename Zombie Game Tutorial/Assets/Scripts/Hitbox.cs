@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Hitbox : MonoBehaviour
 {
@@ -8,7 +10,6 @@ public class Hitbox : MonoBehaviour
     {
         if(other.GetComponentInParent<Player_controller>() != null)
         {
-            Debug.Log("Ere");
             other.GetComponentInParent<Player_controller>().Die();
         }
     }
